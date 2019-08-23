@@ -1,0 +1,36 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: jessie
+    image: 'mehdicopter/systemd-debian-ansible:8'
+    pre_build_image: true
+    privileged: true
+  - name: stretch
+    image: 'mehdicopter/systemd-debian-ansible:9'
+    pre_build_image: true
+    privileged: true
+  - name: buster
+    image: 'mehdicopter/systemd-debian-ansible:10'
+    pre_build_image: true
+    privileged: true
+  - name: centos6
+    image: 'mehdicopter/systemd-centos-ansible:6'
+    pre_build_image: true
+    privileged: true
+  - name: centos7
+    image: 'mehdicopter/systemd-centos-ansible:7'
+    pre_build_image: true
+    privileged: true
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

@@ -1,0 +1,36 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: ec2
+lint:
+  name: yamllint
+platforms:
+  - name: ec2-debian8
+    image: ami-abff2ac4
+    instance_type: t2.micro
+    vpc_subnet_id: subnet-d25fb0b8
+    ssh_user: admin
+  - name: ec2-debian9
+    image: ami-006c08e13f35edce0
+    instance_type: t2.micro
+    vpc_subnet_id: subnet-d25fb0b8
+    ssh_user: admin
+  - name: ec2-centos6
+    image: ami-07fa74e425f2abf29
+    instance_type: t2.micro
+    vpc_subnet_id: subnet-d25fb0b8
+    ssh_user: centos
+  - name: ec2-centos7
+    image: ami-04cf43aca3e6f3de3
+    instance_type: t2.micro
+    vpc_subnet_id: subnet-d25fb0b8
+    ssh_user: centos
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
