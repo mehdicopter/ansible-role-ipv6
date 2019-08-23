@@ -13,7 +13,7 @@ Any Linux from Debian, Ubuntu or CentOS.
 ```yaml
 ---
 # Disable or enable IPv6
-ipv6_enabled: false #false/true
+ipv6_enabled: false
 ```
 ## Example Playbook
     - hosts: servers
