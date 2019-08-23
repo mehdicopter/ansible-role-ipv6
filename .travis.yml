@@ -1,0 +1,17 @@
+---
+language: python
+python:
+  - 2.7
+services:
+  - docker
+env:
+  - EC2_REGION=eu-central-1 BOTO_CONFIG="/dev/null"
+install:
+  - pip install -r requirements.txt
+  - aws configure set aws_access_key_id $AWS_ACCESS_KEY
+  - aws configure set aws_secret_access_key $AWS_SECRET_KEY
+  - aws configure set default.region $EC2_REGION
+script:
+  - molecule test --all
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
